@@ -16,15 +16,18 @@ import java.util.Date;
 public class User extends Model {
 
     @Id
-    public String id;
+    public Long id;
 
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Constraints.Required
     public String name;
 
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Constraints.Required
     public String username;
 
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Constraints.Required
     public String password;
 
     @Formats.DateTime(pattern = "MM/DD/YY")

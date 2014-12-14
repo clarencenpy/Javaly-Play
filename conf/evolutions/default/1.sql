@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table users (
-  id                        varchar(255) not null,
+  id                        bigint auto_increment not null,
   name                      VARCHAR(30) NOT NULL,
   username                  VARCHAR(30) NOT NULL,
   password                  VARCHAR(30) NOT NULL,
