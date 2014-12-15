@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import models.User;
 import play.*;
 import play.data.Form;
@@ -29,4 +30,8 @@ public class Application extends Controller {
         return ok(toJson(users));
     }
 
+    public static Result test() {
+        User u = Ebean.find(User.class, 2);
+        return ok(toJson(u));
+    }
 }
