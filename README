@@ -1,7 +1,6 @@
-This is your new Play application
-=================================
-
-This file will be packaged with your application, when using `activator dist`.
+Hey all, the basecode for this application was generated using Typesafe Activator.
+To get a primer on the PlayFramework, there are a few tutorials/templates available from Typesafe through the Activator UI we can make reference to.
+http://typesafe.com/activator/docs
 
 //BELOW by JEREMY: Understanding Play
 
