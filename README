@@ -11,13 +11,13 @@ This file will be packaged with your application, when using `activator dist`.
 │
    ├── controllers
 │
-   │   └── Application.java
-│   └── views
+   │   └── Application.java // controls result sent in response to request for http://localhost/ A.K.A. WELCOME PAGE
+│   └── views // contains HTML page templates
 │       ├── index.scala.html
 │       └── main.scala.html
 ├── conf
 │   ├── application.conf
-│   └── routes
+│   └── routes // mapping 'action methods' & 'binding parameters' to HTTP path
 ├── project
 │   ├── build.properties
 │   └── plugins.sbt
