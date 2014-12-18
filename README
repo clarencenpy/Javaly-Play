@@ -2,6 +2,7 @@ Hey all, the basecode for this application was generated using Typesafe Activato
 To get a primer on the PlayFramework, there are a few tutorials/templates available from Typesafe through the Activator UI we can make reference to.
 http://typesafe.com/activator/docs
 
+
 //BELOW by JEREMY: Understanding Play
 
 “Listing 1.1. Files in a new Play application
@@ -14,22 +15,24 @@ http://typesafe.com/activator/docs
 │   └── views // contains HTML page templates
 │       ├── index.scala.html
 │       └── main.scala.html
-├── conf
-│   ├── application.conf
-│   └── routes // mapping 'action methods' & 'binding parameters' to HTTP path
+├── conf //where you configure the app
+│   ├── application.conf //configure logging, database connections, server ports, etc
+│   └── routes // mapping app code ('action methods' & 'binding parameters') to HTTP URL paths
+               // e.g. GET /list controllers.Products.list()
 ├── project
-│   ├── build.properties
-│   └── plugins.sbt
-├── public
+│   ├── build.properties //ignore; descriptive files
+│   └── plugins.sbt //ignore; descriptive files
+├── public //resources served directly without processing
 │   ├── images
 │   │   └── favicon.png
 │   ├── javascripts
 │   │   └── jquery-1.9.0.min.js
 │   └── stylesheets
 │       └── main.css
-├── build.sbt
+├── build.sbt //define app's version and 'managed dependencies' (things that u need, i.e. 'classpath')
 └── test
     ├── ApplicationTest.java
     └── IntegrationTest.java”
 
 Excerpt From: Nicolas Leroux Sietse de Kaper. “Play for Java.” iBooks. 
+
