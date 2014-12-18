@@ -25,18 +25,17 @@ public class TestEngine {
         this.answer = answer;
     }
 
-    //@waituck, model attributes/methods may be changed muhhaaaaha
     public ArrayList<TestCaseResult> run(){
         ArrayList<TestCaseResult> testCaseResults = new ArrayList<>();
-        String codeWithMethod = CodeInjector.injectMethod(q.getOriginalCode(), answer);
+        String codeWithMethod = CodeInjector.injectMethod(q.mainMethodCode, answer);
         int id = 0;
 
-        for(TestCase t: q.getTestCases()){
+        for(TestCase t: q.testCases){
             String codeWithTestCase =
-                    CodeInjector.injectTestCase(codeWithMethod, q.getMethodName(), t.getInput());
+                    CodeInjector.injectTestCase(codeWithMethod, q.methodName, t.input);
             String output = Compiler.compileAndRun(codeWithTestCase);
             TestCaseResult tcr =
-                    new TestCaseResult(++id, t.getInput(), output, t.getOutput(), output.equals(t.getOutput()));
+                    new TestCaseResult(++id, t.input, output, t.output, output.equals(t.output));
             testCaseResults.add(tcr);
         }
 
