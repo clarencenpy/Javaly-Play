@@ -14,6 +14,7 @@ import java.util.List;
  */
 
 @Entity
+@Table(name="questions")
 public class Question extends Model{
 
     @Id
@@ -22,7 +23,7 @@ public class Question extends Model{
     @ManyToOne
     public User author;
 
-    @OneToMany(mappedBy="question")
+    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
     public List<TestCase> testCases = new ArrayList<>();
 
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
@@ -41,8 +42,7 @@ public class Question extends Model{
     @Constraints.Required
     public String description;
 
-    @Column(columnDefinition = "TEXT NOT NULL")
-    @Constraints.Required
+    @Column(columnDefinition = "TEXT")
     public String mainMethodCode;
 
     @Column(columnDefinition = "TEXT")

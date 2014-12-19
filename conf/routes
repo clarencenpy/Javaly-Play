@@ -8,6 +8,9 @@ GET         /users               controllers.Application.getUsers()
 POST        /users               controllers.Application.addUser()
 GET         /test                controllers.Application.test()
 
+# Test
+GET         /addfake             controllers.Application.addFakeQuestion()
+GET         /run                 controllers.Application.run()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

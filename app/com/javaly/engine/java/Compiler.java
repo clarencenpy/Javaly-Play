@@ -71,7 +71,7 @@ public class Compiler {
         for(JavaFileObject j : compilationUnits1){
             try{
                 String fullPath = new File(j.toUri()).getCanonicalPath();
-                CLASS_PATH = fullPath.substring(0, fullPath.lastIndexOf('\\'));
+                CLASS_PATH = fullPath.substring(0, fullPath.lastIndexOf('/'));
                 break;
             } catch (IOException e){
                 e.printStackTrace();

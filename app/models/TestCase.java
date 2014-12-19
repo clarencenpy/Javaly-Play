@@ -2,16 +2,14 @@ package models;
 
 import play.data.validation.Constraints;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by clarencenpy on 15/12/14.
  */
 
 @Entity
+@Table(name="test_cases")
 public class TestCase {
 
     @Id
