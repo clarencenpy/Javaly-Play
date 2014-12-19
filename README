@@ -7,7 +7,7 @@ http://typesafe.com/activator/docs
 
 “Listing 1.1. Files in a new Play application
 ├── README
-├── app
+├── app ** MOST IMPORTANT. Contains java codes (controller) and html codes (views). Root for src codes
 │
    ├── controllers
 │
