@@ -9,35 +9,50 @@ We hope to have all of the functions of Practice-it, as well as the following:
 4. Learns what you are weak at so it can prescribe you questions that will aid you (machine learning anyone? :P)
 5. Support other languages! 
 
+##Current roadmap
+1. Basic functionalities (compile, run, check answers for method based questions)
+2. Adding of questions
+3. Basic index, question, and checking UI
+
 ###About the PlayFramework
 To get a primer on the PlayFramework, there are a few tutorials/templates available from Typesafe through the Activator UI we can make reference to.
+
 http://typesafe.com/activator/docs
+
 To better understand the framework, consult the Play for Java book.
 
 ###Setting up your environment
-1. Download and install the Play Framework
+######Download and install the Play Framework
+
 https://www.playframework.com/
+
 https://www.playframework.com/documentation/2.3.x/Installing
 
-2. Register for a student account under jetbrains, and download IntelliJ Ultimate (you'll need the debugger!), login with your student account when you first run it! Install IntelliJ with everything! 
+######Register for a student account under jetbrains, and download IntelliJ Ultimate (you'll need the debugger!), login with your student account when you first run it! Install IntelliJ with everything! 
+
 https://www.jetbrains.com/student/
+
 https://www.jetbrains.com/idea/download/
 
 >The following instructions might require some Google-fu as instructions differ from OS.
+
 >If you're on WAMP you can ask Wai Tuck
+
 >If you're on MAMP you can ask Clarence
 
-3. Download and install WAMP/LAMP/MAMP, or alternatively install mySQL community edition.
+######Download and install WAMP/LAMP/MAMP, or alternatively install mySQL community edition.
 
-4. Configure my.ini
+######Configure my.ini
 Replace all instances of 3306 (the default port of mySQL) with 8889
 
-5. Run mySQL console as root, when prompted for password just press enter.
+######Run mySQL console as root, when prompted for password just press enter.
 Execute the following command to change the password to 'root' (need to change evenutally haha)
+
 `UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root';FLUSH PRIVILEGES;CREATE DATABASE javaly;USE javaly;
+
 Restart mySQL
 
-6. Run IntelliJ
+######Run IntelliJ
 Go VCS > Checkout from VCS > Git
 Copy this into the source url
 `https://github.com/clarencenpy/Javaly.git
@@ -45,12 +60,16 @@ Then clone! The initial cloning stage will take VERY LONG. Be patient!
 
 There's also a checkout from GitHub; you can also try that, but it doesn't really matter which way you do it.
 
-7. Running Play
+######Running Play
+```
 Go to Run > Edit Configurations
 Press the green plus
 Press Play 2 App
 Tick auto-reload
 Click apply, then OK!
+```
+
+##That's all folks!
 
 ```
 //BELOW by JEREMY: Understanding Play
