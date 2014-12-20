@@ -1,5 +1,6 @@
 package com.javaly.engine.java;
 
+
 import java.io.BufferedReader;
 import java.io.CharArrayWriter;
 import java.io.File;
@@ -34,7 +35,7 @@ public class Compiler {
         String output = compileFile(javaFile); //side effect:  sets the CLASS_PATH
 
         if(output.equals("")){
-            output = executeJavaClass(className);
+            output = executeCommand(className);
         }
 
         clean(className);
@@ -91,18 +92,14 @@ public class Compiler {
     }
 
 
-    private static String executeJavaClass(String className){
-        return executeCommand("java -classpath " + CLASS_PATH + FILE_SEPARATOR  + " " + className);
-    }
-
-    private static String executeCommand(String command){
+    private static String executeCommand(String className){
         StringBuffer output = new StringBuffer();
         Process p;
         Timer processTimer = new Timer();
         ProcessKiller pk;
 
         try {
-            p = Runtime.getRuntime().exec(command);
+            p = new ProcessBuilder("java", "-cp", CLASS_PATH+FILE_SEPARATOR, "Test").start();
             //kills the thread if it runs for more than 5s (infinite loop)
             pk = new ProcessKiller(p);
             processTimer.schedule(pk ,5000);
@@ -112,16 +109,16 @@ public class Compiler {
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
 
             String line = "";
-            while ((line = reader.readLine())!= null) {
+            while ((line = reader.readLine()) != null) {
                 output.append(line + "\n");
             }
-            if(pk.getHasKilled())
+            if(pk.getHasKilled()) {
                 output.insert(0, "ERROR: INFINITE LOOP \n");
-
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return output.toString().substring(0, output.length() - 1); //remove \n at the end;
+        return output.toString().substring(0, output.length() - 1 ); //remove \n at the end;
     }
 
     private static class ProcessKiller extends TimerTask{
