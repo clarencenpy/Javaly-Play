@@ -74,11 +74,13 @@ Click apply, then OK!
 ```
 Alternatively, cd to the project directory and run
 `activator run`
-I find this to have shorter loading time.
+
+I find this to have a shorter loading time.
 
 
 #####Debugging Play with IntelliJ
 To use IntelliJ's built in debugger, we have some extra steps to do.
+
 1. Set up a remote debugger in IntelliJ
 ```
 Go to Run > Edit Configurations
