@@ -21,6 +21,7 @@ import javax.tools.ToolProvider;
 public class Compiler {
     private static final String JAVA_EXTENSION  = ".java";
     private static final String CLASS_EXTENSION  = ".class";
+    private static final String FILE_SEPARATOR = System.getProperty("file.separator");
     private static String CLASS_PATH = "" ;
 
     //main process
@@ -71,7 +72,7 @@ public class Compiler {
         for(JavaFileObject j : compilationUnits1){
             try{
                 String fullPath = new File(j.toUri()).getCanonicalPath();
-                CLASS_PATH = fullPath.substring(0, fullPath.lastIndexOf('/'));
+                CLASS_PATH = fullPath.substring(0, fullPath.lastIndexOf(FILE_SEPARATOR));
                 break;
             } catch (IOException e){
                 e.printStackTrace();
@@ -91,8 +92,7 @@ public class Compiler {
 
 
     private static String executeJavaClass(String className){
-        return executeCommand("java -classpath \"" + CLASS_PATH + "\" " + className);
-
+        return executeCommand("java -classpath " + CLASS_PATH + FILE_SEPARATOR  + " " + className);
     }
 
     private static String executeCommand(String command){
