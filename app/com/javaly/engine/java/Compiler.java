@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.tools.DiagnosticCollector;
@@ -23,36 +25,38 @@ public class Compiler {
     private static final String JAVA_EXTENSION  = ".java";
     private static final String CLASS_EXTENSION  = ".class";
     private static final String FILE_SEPARATOR = System.getProperty("file.separator");
-    private static String CLASS_PATH = "" ;
 
-    //main process
-    public static String compileAndRun(String code){
-        return compileAndRun(code, "Test");
+    private String classPath = "" ;
+    private String code = "";
+    private String className = "";
+
+    private Compiler(){
+        //Do not instantiate without any code
     }
 
-    public static String compileAndRun(String code, String className){
+    public Compiler(String code){
+         this(code, "Test");
+    }
+
+    public Compiler(String code, String className){
+        this.code = code;
+        this.className = className;
+    }
+
+    //main process
+    public String compileAndRun(){
         File javaFile = stringToJavaFile(code, className);
-        String output = compileFile(javaFile); //side effect:  sets the CLASS_PATH
+        String output = compileFile(javaFile); //side effect:  sets the classPath
 
         if(output.equals("")){
-            output = executeCommand(className);
+            output = executeJavaClass();
         }
 
-        clean(className);
+        clean();
         return output;
     }
 
-    private static File stringToJavaFile (String code, String className){
-        try{
-            FileWriter fw = new FileWriter(className + JAVA_EXTENSION);
-            fw.write(code);
-            fw.close();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        return new File(className + JAVA_EXTENSION);
-    }
-    private static boolean clean(String className){
+    private boolean clean(){
         File f = new File (className + JAVA_EXTENSION);
         boolean a = f.delete();
 
@@ -62,7 +66,7 @@ public class Compiler {
         return a & b;
     }
 
-    private static String compileFile(File javaFile){
+    private  String compileFile(File javaFile){
         CharArrayWriter  output = new CharArrayWriter(); //stores the output of compilation
         JavaCompiler compiler =
                 ToolProvider.getSystemJavaCompiler(); //must set PATH to jdk and NOT jre for this to return a compiler
@@ -73,7 +77,7 @@ public class Compiler {
         for(JavaFileObject j : compilationUnits1){
             try{
                 String fullPath = new File(j.toUri()).getCanonicalPath();
-                CLASS_PATH = fullPath.substring(0, fullPath.lastIndexOf(FILE_SEPARATOR));
+                classPath = fullPath.substring(0, fullPath.lastIndexOf(FILE_SEPARATOR));
                 break;
             } catch (IOException e){
                 e.printStackTrace();
@@ -90,16 +94,19 @@ public class Compiler {
         }
         return output.toString();
     }
+    private String executeJavaClass(){
+        List<String> command = Arrays.asList("java", "-cp", classPath + FILE_SEPARATOR, className);
+        return executeCommand(command);
+     }
 
-
-    private static String executeCommand(String className){
+    private static String executeCommand(List<String> command){
         StringBuffer output = new StringBuffer();
         Process p;
         Timer processTimer = new Timer();
         ProcessKiller pk;
 
         try {
-            p = new ProcessBuilder("java", "-cp", CLASS_PATH+FILE_SEPARATOR, "Test").start();
+            p = new ProcessBuilder(command).start();
             //kills the thread if it runs for more than 5s (infinite loop)
             pk = new ProcessKiller(p);
             processTimer.schedule(pk ,5000);
@@ -118,9 +125,19 @@ public class Compiler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return output.toString().substring(0, output.length() - 1 ); //remove \n at the end;
+        return output.toString().substring(0, output.length() - 1); //remove \n at the end;
     }
 
+    private static File stringToJavaFile (String code, String className){
+        try{
+            FileWriter fw = new FileWriter(className + JAVA_EXTENSION);
+            fw.write(code);
+            fw.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return new File(className + JAVA_EXTENSION);
+    }
     private static class ProcessKiller extends TimerTask{
         Process p;
         boolean hasKilled = false;

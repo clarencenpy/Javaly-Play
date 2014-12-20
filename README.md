@@ -81,7 +81,7 @@ I find this to have a shorter loading time.
 #####Debugging Play with IntelliJ
 To use IntelliJ's built in debugger, we have some extra steps to do.
 
-1. Set up a remote debugger in IntelliJ
+Step 1: Set up a remote debugger in IntelliJ
 ```
 Go to Run > Edit Configurations
 Press the plus button and select Remote
@@ -91,20 +91,20 @@ Select Transport: Socket
 	   Search sources using module's classpath: <whole project>
 Hit Apply!
 ```
-2. Run Play in debug mode
+Step 2: Run Play in debug mode
 ```
 Make sure that you are not already running Play from IntelliJ
 In the terminal, cd to the project directory
 Run "activator -jvm-debug 9999 run"
 ```
-3. Back in IntelliJ
+Step 3: Back in IntelliJ
 ```
 Go to Run > Debug
 Select the Remote Configuration you created in 1.
 You should see the following in the debugger console:
 Connected to the target VM, address: 'localhost:9999', transport: 'socket'
 ```
-4. Set breakpoints as necessary and happy debugging~
+Step 4: Set breakpoints as necessary and happy debugging~
 
 ###That's all folks!
 
