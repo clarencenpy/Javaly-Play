@@ -21,14 +21,14 @@ http://typesafe.com/activator/docs
 
 To better understand the framework, consult the Play for Java book.
 
-###Setting up your environment
-######Download and install the Play Framework
+##Setting up your environment
+###Download and install the Play Framework
 
 https://www.playframework.com/
 
 https://www.playframework.com/documentation/2.3.x/Installing
 
-######Register for a student account under jetbrains, and download IntelliJ Ultimate (you'll need the debugger!), login with your student account when you first run it! Install IntelliJ with everything! 
+###Register for a student account under jetbrains, and download IntelliJ Ultimate (you'll need the debugger!), login with your student account when you first run it! Install IntelliJ with everything! 
 
 https://www.jetbrains.com/student/
 
@@ -40,27 +40,29 @@ https://www.jetbrains.com/idea/download/
 
 >If you're on MAMP you can ask Clarence
 
-######Download and install WAMP/LAMP/MAMP, or alternatively install mySQL community edition.
+###Download and install WAMP/LAMP/MAMP, or alternatively install mySQL community edition.
 
-######Configure my.ini
+###Configure my.ini
 Replace all instances of 3306 (the default port of mySQL) with 8889
 
-######Run mySQL console as root, when prompted for password just press enter.
+###Run mySQL console as root, when prompted for password just press enter.
 Execute the following command to change the password to 'root' (need to change evenutally haha)
 
 `UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root';FLUSH PRIVILEGES;CREATE DATABASE javaly;USE javaly;
 
 Restart mySQL
 
-######Run IntelliJ
+###Run IntelliJ
+```
 Go VCS > Checkout from VCS > Git
 Copy this into the source url
 `https://github.com/clarencenpy/Javaly.git
 Then clone! The initial cloning stage will take VERY LONG. Be patient!
 
 There's also a checkout from GitHub; you can also try that, but it doesn't really matter which way you do it.
+```
 
-######Running Play
+###Running Play
 ```
 Go to Run > Edit Configurations
 Press the green plus
