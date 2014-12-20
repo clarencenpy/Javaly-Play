@@ -27,15 +27,7 @@ public class TestEngine {
 
     public ArrayList<TestCaseResult> run(){
         ArrayList<TestCaseResult> testCaseResults = new ArrayList<>();
-        String template = "public class Test{\n" +
-                "    public static void main(String[] args){\n" +
-                "        //test case insertion point\n" +
-                "        //ad168bea2e8cab5643936a5b223d859adc763f9dd468d225152f824041080559\n" +
-                "    }\n" +
-                "\n" +
-                "    //function insertion point\n" +
-                "    //011f94cb6b87975609c962660ce9261cbf117cbca49057e6a0e9f7a274f28780\n" +
-                "}";
+        String template = Question.INJECTION_TEMPLATE;
         String codeWithMethod = CodeInjector.injectMethod(template, answer);
         int id = 0;
 

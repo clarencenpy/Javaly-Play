@@ -1,14 +1,12 @@
 package com.javaly.engine.java;
 
+import models.Question;
+
 /**
  *  Utility class to inject methods and test cases
  * @author ASUS
  */
 public class CodeInjector {
-    private static final String METHOD_INSERTION_HASH =
-            "//011f94cb6b87975609c962660ce9261cbf117cbca49057e6a0e9f7a274f28780";
-    private static final String TEST_CASE_INSERTION_HASH =
-            "//ad168bea2e8cab5643936a5b223d859adc763f9dd468d225152f824041080559";
 
     private CodeInjector(){
     }
@@ -29,7 +27,7 @@ public class CodeInjector {
         testCaseCode.append(input);
         testCaseCode.append("));");
 
-        String outputCode = code.replaceAll(TEST_CASE_INSERTION_HASH, testCaseCode.toString());
+        String outputCode = code.replaceAll(Question.TEST_CASE_INJECTION_HASH, testCaseCode.toString());
 
         return outputCode;
     }
@@ -42,7 +40,7 @@ public class CodeInjector {
      *  @return String which is the output code
      */
     public static String injectMethod(String code,  String input){
-        String outputCode = code.replaceAll(METHOD_INSERTION_HASH, input);
+        String outputCode = code.replaceAll(Question.METHOD_INJECTION_HASH, input);
         return outputCode;
     }
 
