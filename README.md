@@ -3,14 +3,16 @@ Javaly is Practice-it 2.0 on steroids. It's a tool to help professors and teache
 
 We hope to have all of the functions of Practice-it, as well as the following:
 
-1. Interactive LIVE classroom enhancing IDE
-2. Hardcore practice mode for those tricky exam questions
-3. Arcade mode
+1. Interactive LIVE classroom enhancing IDE (Code mirroring/Chat)
+2. Arcade mode (Solve questions of increasing difficulty level *Hardcore*)
+3. Exam Revision Mode (Review those tricky exam questions/Questions you got wrong)
 4. Learns what you are weak at so it can prescribe you questions that will aid you (machine learning anyone? :P)
+5. Instructor Dashboard to monitor student performance
+6. Crowd-sourcing Java questions from students
 5. Support other languages! 
 
 ##Current roadmap
-1. Basic functionalities (compile, run, check answers for method based questions)
+1. Basic functionality (compile, run, check answers for method based questions)
 2. Adding of questions
 3. Basic index, question, and checking UI
 
@@ -70,6 +72,37 @@ Press Play 2 App
 Tick auto-reload
 Click apply, then OK!
 ```
+Alternatively, cd to the project directory and run
+`activator run`
+I find this to have shorter loading time.
+
+
+#####Debugging Play with IntelliJ
+To use IntelliJ's built in debugger, we have some extra steps to do.
+1. Set up a remote debugger in IntelliJ
+```
+Go to Run > Edit Configurations
+Press the plus button and select Remote
+Select Transport: Socket
+	   Debugger Mode: Attach
+	   Port: 9999
+	   Search sources using module's classpath: <whole project>
+Hit Apply!
+```
+2. Run Play in debug mode
+```
+Make sure that you are not already running Play from IntelliJ
+In the terminal, cd to the project directory
+Run "activator -jvm-debug 9999 run"
+```
+3. Back in IntelliJ
+```
+Go to Run > Debug
+Select the Remote Configuration you created in 1.
+You should see the following in the debugger console:
+Connected to the target VM, address: 'localhost:9999', transport: 'socket'
+```
+4. Set breakpoints as necessary and happy debugging~
 
 ###That's all folks!
 
