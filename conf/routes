@@ -2,15 +2,22 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+# Application
 GET         /                    controllers.Application.index()
-GET         /users               controllers.Application.getUsers()
-POST        /users               controllers.Application.addUser()
-GET         /test                controllers.Application.test()
+
+
+# Questions
+#TODO
+#GET         /questions              controllers.QuestionMgr.getQuestions()
+#GET         /question/:id           controllers.QuestionMgr.getQuestion(id: Long)
+#POST        /question               controllers.QuestionMgr.addQuestion()
 
 # Test
-GET         /addfake             controllers.Application.addFakeQuestion()
-GET         /run                 controllers.Application.run()
+GET         /addfake             controllers.Test.addFakeQuestion()
+GET         /run                 controllers.Test.run()
+GET         /users               controllers.Test.getUsers()
+GET         /user/:id            controllers.Test.getUser(id: Long)
+POST        /user                controllers.Test.addUser()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

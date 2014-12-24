@@ -6,7 +6,6 @@ import models.Question;
 import models.TestCase;
 import models.TestCaseResult;
 import models.User;
-import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.*;
@@ -24,45 +23,4 @@ public class Application extends Controller {
         return ok(index.render("hello world!"));
     }
 
-    public static Result addUser() {
-        User u = Form.form(User.class).bindFromRequest().get();
-        u.save();
-        return redirect(routes.Application.index());
-    }
-
-    public static Result getUsers() {
-        List<User> users = new Model.Finder(String.class, User.class).all();
-        return ok(toJson(users));
-    }
-
-    public static Result test() {
-        User u = Ebean.find(User.class, 2);
-        return ok(toJson(u));
-    }
-
-    public static Result addFakeQuestion() {
-        //add question to db
-        Question q = new Question();
-        q.title = "Test question";
-        q.className = "Test";
-        q.methodName = "doSomething";
-        q.description = "test test test";
-
-        List<TestCase> testCases = new ArrayList<>();
-        TestCase t = new TestCase();
-        t.input = "1";
-        t.output = "2";
-        testCases.add(t);
-        q.testCases = testCases;
-
-        Ebean.save(q);
-        return redirect(routes.Application.index());
-    }
-
-    public static Result run() {
-        String code = "public static int doSomething(int i){return i++;}";
-        TestEngine te = new TestEngine(Ebean.find(Question.class, 1), code);
-        ArrayList<TestCaseResult> results = te.run();
-        return ok(toJson(results));
-    }
 }
