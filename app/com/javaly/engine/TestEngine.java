@@ -42,7 +42,8 @@ public class TestEngine {
         for(TestCase t: q.testCases){
             String codeWithTestCase =
                     CodeInjector.injectTestCase(codeWithMethod, q.methodName, t.input);
-            String output = Compiler.compileAndRun(codeWithTestCase);
+            Compiler c = new Compiler(codeWithTestCase);
+            String output = c.compileAndRun();
             TestCaseResult tcr =
                     new TestCaseResult(++id, t.input, output, t.output, output.equals(t.output));
             testCaseResults.add(tcr);
