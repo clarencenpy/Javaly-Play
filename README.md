@@ -1,3 +1,9 @@
+>ER Diagram 
+
+>To View: https://www.lucidchart.com/documents/view/245c0b7e-9b44-4bd9-b009-8802c1912e1c
+
+>To Edit: https://www.lucidchart.com/invitations/accept/da3b36ca-f937-4768-a430-dbd69fc45d06
+
 #Javaly!
 Javaly is Practice-it 2.0 on steroids. It's a tool to help professors and teachers teach programming better, and to help students learn programming in a fun yet methodical way, making use (eventually...) of stats and data to enhance the learning experience and the teaching experience, all in the name of learning how to write good clean code.
 
