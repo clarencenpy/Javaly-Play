@@ -25,11 +25,18 @@ public class ExecuteUtility {
             processTimer.schedule(pk ,5000);
 
             p.waitFor();
-            BufferedReader reader =
+            BufferedReader outReader =
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
 
+           //catch runtime errors
+            BufferedReader errReader =
+                    new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
             String line = "";
-            while ((line = reader.readLine()) != null) {
+            while ((line = outReader.readLine()) != null) {
+                output.append(line + "\n");
+            }
+            while ((line = errReader.readLine()) != null) {
                 output.append(line + "\n");
             }
             if(pk.getHasKilled()) {

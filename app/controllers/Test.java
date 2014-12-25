@@ -53,7 +53,7 @@ public class Test extends Controller {
     }
 
     public static Result run() {
-        String code = "public static int doSomething(int i){return i++;}";
+        String code = "public static int doSomething(int i){int [] j = new int[1]; return i++;}";
         TestEngine te = new TestEngine(Ebean.find(Question.class, 1), code);
         ArrayList<TestCaseResult> results = te.run();
         return ok(toJson(results));
