@@ -1,4 +1,4 @@
-package com.javaly.engine.java;
+package engine.util;
 
 import models.Question;
 
@@ -6,9 +6,9 @@ import models.Question;
  *  Utility class to inject methods and test cases
  * @author ASUS
  */
-public class CodeInjector {
+public class CodeInjectorUtility {
 
-    private CodeInjector(){
+    private CodeInjectorUtility(){
     }
 
     /**

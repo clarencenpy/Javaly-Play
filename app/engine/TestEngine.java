@@ -1,10 +1,9 @@
-package com.javaly.engine;
+package engine;
 
 import models.Question;
 import models.TestCase;
 import models.TestCaseResult;
-import com.javaly.engine.java.CodeInjector;
-import com.javaly.engine.java.Compiler;
+import engine.util.CodeInjectorUtility;
 
 import java.util.ArrayList;
 /*
@@ -28,12 +27,12 @@ public class TestEngine {
     public ArrayList<TestCaseResult> run(){
         ArrayList<TestCaseResult> testCaseResults = new ArrayList<>();
         String template = Question.INJECTION_TEMPLATE;
-        String codeWithMethod = CodeInjector.injectMethod(template, answer);
+        String codeWithMethod = CodeInjectorUtility.injectMethod(template, answer);
         int id = 0;
 
         for(TestCase t: q.testCases){
             String codeWithTestCase =
-                    CodeInjector.injectTestCase(codeWithMethod, q.methodName, t.input);
+                    CodeInjectorUtility.injectTestCase(codeWithMethod, q.methodName, t.input);
             Compiler c = new Compiler(codeWithTestCase);
             String output = c.compileAndRun();
             TestCaseResult tcr =
