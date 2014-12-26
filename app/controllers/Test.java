@@ -28,8 +28,8 @@ public class Test extends Controller {
         return ok(toJson(users));
     }
 
-    public static Result getUser(long id) {
-        User u = Ebean.find(User.class, id);
+    public static Result getUser(String username) {
+        User u = Ebean.find(User.class, username);
         return ok(toJson(u));
     }
 
