@@ -51,28 +51,20 @@ public class Compiler {
         this.code = code;
         this.className = className;
         this.classPath = classPath;
-        this.workingDir = workingDir;
+        this.workingDir = workingDir + getCompilerIdentifier() + FILE_SEPARATOR ;
     }
 
     //main process
     public String compileAndRun(){
         File javaFile = stringToJavaFile(code, className);
-        String fullPath = "";
-        try {
-            fullPath = javaFile.getCanonicalPath();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-        workingDir = fullPath.substring(0, fullPath.lastIndexOf(FILE_SEPARATOR));
-
         String output = compileFile(javaFile, null); //TODO: Integrate classpaths into the compilation step
 
+        //if nothing in output i.e. nothing in std.err; compilation successful; executejavaclass
         if(output.equals("")){
             output = executeJavaClass();
         }
 
-        clean();
+        clean(javaFile.getParentFile());
         return output;
     }
 
@@ -82,14 +74,17 @@ public class Compiler {
         return output;
     }
 
-    private boolean clean(){
-        File f = new File (workingDir + className + JAVA_EXTENSION);
-        boolean a = f.delete();
-
-        f = new File (workingDir + className + CLASS_EXTENSION);
-        boolean b = f.delete();
-
-        return a & b;
+    private void clean(File f){
+        if (f.isDirectory()) {
+            for (File c : f.listFiles()) {
+                if (!c.delete()) {
+                    c.deleteOnExit();
+                }
+            }
+        }
+        if (!f.delete()){
+            f.deleteOnExit();
+        }
     }
 
     private static  String compileFile(File javaFile, String[] classpath){
@@ -131,21 +126,22 @@ public class Compiler {
     }
     private String executeJavaClass(){
         //TODO: iterate through classpaths and add it to the commands
-        List<String> command = Arrays.asList("java", "-cp", workingDir + FILE_SEPARATOR, className);
+        List<String> command = Arrays.asList("java", "-cp", workingDir,  className);
         return ExecuteUtility.executeCommand(command);
      }
 
-
-
     private File stringToJavaFile (String code, String className){
-        try{
-            FileWriter fw = new FileWriter(workingDir + className + JAVA_EXTENSION);
+        new File(workingDir).mkdirs();
+        try (FileWriter fw =   new FileWriter(workingDir + className + JAVA_EXTENSION)) {
             fw.write(code);
-            fw.close();
         } catch (IOException e){
             e.printStackTrace();
         }
-        return new File(className + JAVA_EXTENSION);
+        return new File(workingDir  + className + JAVA_EXTENSION);
+    }
+
+    private String getCompilerIdentifier(){
+        return Integer.toHexString(hashCode());
     }
 
 }

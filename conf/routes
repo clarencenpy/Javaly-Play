@@ -11,7 +11,7 @@ GET         /                    controllers.Application.index()
 # Questions
 #GET         /questions              controllers.QuestionMgr.getQuestions()
 #GET         /question/:id           controllers.QuestionMgr.getQuestion(id: Long)
-GET        /question/add               controllers.QuestionMgr.showAddQuestion()
+GET          /question/add               controllers.QuestionMgr.showAddQuestion()
 POST        /question/add               controllers.QuestionMgr.addQuestion()
 
 # Test
