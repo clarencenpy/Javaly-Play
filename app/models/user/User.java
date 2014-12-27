@@ -1,4 +1,4 @@
-package models;
+package models.user;
 
 import play.data.format.Formats;
 import play.data.validation.Constraints;
@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="users")
-public class User extends Model {
+public abstract class User extends Model {
 
     @Id
     public Long id;
@@ -36,4 +36,16 @@ public class User extends Model {
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     public Date lastUpdate;
+
+    public char userType; // 's' (student), 'i' (instructor), 'a' (admin)
+
+    public User (char userType, Long id, String name, String username, String password){
+        this.userType = userType;
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+
+    }
+
 }

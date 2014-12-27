@@ -5,7 +5,7 @@ import engine.TestEngine;
 import models.Question;
 import models.TestCase;
 import models.TestCaseResult;
-import models.User;
+import models.user.User;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.*;
