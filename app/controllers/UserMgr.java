@@ -29,21 +29,24 @@ public class UserMgr extends Controller{
                 .findUnique();
 
         boolean isAuth = false;
-        if (u != null) {
+
+        if (u == null) {
+            return status(419, "User not found!");
+        } else{
             try {
                 String userProvidedPass = SecurityUtility.getHash(password, u.salt);
                 isAuth = userProvidedPass.equals(u.password);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            if (isAuth) {
+                session().put("username", username);
+                return ok("<form action=\"logout\" method=\"POST\"> <input type=\"submit\" value=\"Logout!\"></form>").as("text/html");
+            } else {
+                return status(420, "Wrong password!");
+            }
         }
-        if (isAuth) {
-            session().put("username", username);
-            return ok("<form action=\"logout\" method=\"POST\"> <input type=\"submit\" value=\"Logout!\"></form>").as("text/html");
 
-        }
-        else
-            return status(420, "Wrong password!");
     }
 
     public static Result logoutUser() {
