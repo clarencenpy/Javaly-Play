@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="users")
-public abstract class User extends Model {
+public class User extends Model {
 
     @Id
     public Long id;
@@ -26,9 +26,13 @@ public abstract class User extends Model {
     @Constraints.Required
     public String username;
 
-    @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Column(columnDefinition = "VARCHAR(100) NOT NULL")
     @Constraints.Required
     public String password;
+
+    @Column(columnDefinition = "VARCHAR(32) NOT NULL")
+    @Constraints.Required
+    public String salt;
 
     @Formats.DateTime(pattern = "MM/DD/YY")
     @Column(columnDefinition = "DATETIME NOT NULL")

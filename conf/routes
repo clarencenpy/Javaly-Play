@@ -2,25 +2,29 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Please use SPACE instead of TAB here! THANKS ~ Wai Tuck
-
 # Application
-GET         /                      controllers.Application.index()
-
+GET         /                       controllers.Application.index()
 
 # Questions
-#GET         /questions              controllers.QuestionMgr.getQuestions()
-#GET         /question/:id           controllers.QuestionMgr.getQuestion(id: Long)
-GET          /question/add              controllers.QuestionMgr.showAddQuestion()
-POST        /question/add              controllers.QuestionMgr.addQuestion()
-POST        /question/modify/       controllers.QuestionMgr.modQuestion()
-POST        /question/submit/       controllers.QuestionMgr.submitAnswer()
+POST        /question/add           controllers.QuestionMgr.addQuestion()
+POST        /question/modify        controllers.QuestionMgr.modQuestion()
+POST        /question/submit        controllers.QuestionMgr.submitAnswer()
+#this is a test method!
+GET         /question/add/           controllers.QuestionMgr.showAddQuestion()
+
+
+# User Management
+POST        /user/login             controllers.UserMgr.loginUser()
+POST        /user/logout            controllers.UserMgr.logoutUser()
+GET         /user/register/          controllers.UserMgr.showRegisterUser()
+POST        /user/register          controllers.UserMgr.registerUser()
+
 # Test
-GET         /addfake               controllers.Test.addFakeQuestion()
-GET         /run                   controllers.Test.run()
-GET         /users                 controllers.Test.getUsers()
-GET         /user/:username        controllers.Test.getUser(username: String)
-POST        /user                  controllers.Test.addUser()
+GET         /addfake                controllers.Test.addFakeQuestion()
+GET         /run                    controllers.Test.run()
+#GET         /users                 controllers.Test.getUsers()
+#GET         /user/:username        controllers.Test.getUser(username: String)
+#POST        /user                  controllers.Test.addUser()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file          controllers.Assets.at(path="/public", file)
+GET         /assets/*file           controllers.Assets.at(path="/public", file)

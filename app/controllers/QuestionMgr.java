@@ -37,6 +37,17 @@ public class QuestionMgr extends Controller{
         return ok(toJson(q));
     }
 
+    public static Result submitAnswer() {
+        DynamicForm requestData = Form.form().bindFromRequest();
+        String code = requestData.get("code");
+        long id = Long.parseLong(requestData.get("id"));
+
+        TestEngine te = new TestEngine(Ebean.find(Question.class, id), code);
+        ArrayList<TestCaseResult> results = te.run();
+
+        return ok(toJson(results));
+    }
+
     private static Question bindQuestionForm(){
         Form<Question> questionForm = Form.form(Question.class);
 
@@ -59,14 +70,4 @@ public class QuestionMgr extends Controller{
         return q;
     }
 
-    public static Result submitAnswer() {
-        DynamicForm requestData = Form.form().bindFromRequest();
-        String code = requestData.get("code");
-        long id = Long.parseLong(requestData.get("id"));
-
-        TestEngine te = new TestEngine(Ebean.find(Question.class, id), code);
-        ArrayList<TestCaseResult> results = te.run();
-
-        return ok(toJson(results));
-    }
 }

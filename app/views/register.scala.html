@@ -4,19 +4,22 @@
         <title>Javaly!</title>
     </head>
     <body>
-        <h1>Welcome to Javaly!</h1><br>
-        <form action="user/login" method="POST">
-
+        <h1>Registration Form</h1><br>
+        <form action="/user/register" method="POST">
+            Name:<br>
+            <input type="text" name="name" value="Lee Yeow Leong">
+            <br>
             Username:<br>
             <input type="text" name="username" value="yllee">
             <br>
             Password:<br>
             <input type="password" name="password" value="">
+
+                <input type="hidden" name="salt" value="123">
             <br><br>
 
             <input type="submit" value="Submit">
         </form>
         <br>
-        <a href="user/register/">Register!</a>
     </body>
 </html>
