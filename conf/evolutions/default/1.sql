@@ -32,6 +32,7 @@ create table users (
   password                  VARCHAR(30) NOT NULL,
   created_date              DATETIME NOT NULL,
   last_update               TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  user_type                 varchar(255),
   constraint pk_users primary key (id))
 ;
 
