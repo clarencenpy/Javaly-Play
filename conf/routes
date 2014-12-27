@@ -2,22 +2,24 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Please use SPACE instead of TAB here! THANKS ~ Wai Tuck
+
 # Application
 GET         /                    controllers.Application.index()
 
 
 # Questions
-#TODO
 #GET         /questions              controllers.QuestionMgr.getQuestions()
 #GET         /question/:id           controllers.QuestionMgr.getQuestion(id: Long)
-#POST        /question               controllers.QuestionMgr.addQuestion()
+GET          /question/add               controllers.QuestionMgr.showAddQuestion()
+POST        /question/add               controllers.QuestionMgr.addQuestion()
 
 # Test
-GET         /addfake             controllers.Test.addFakeQuestion()
-GET         /run                 controllers.Test.run()
-GET         /users               controllers.Test.getUsers()
-GET         /user/:id            controllers.Test.getUser(id: Long)
-POST        /user                controllers.Test.addUser()
+GET         /addfake                       controllers.Test.addFakeQuestion()
+GET         /run                               controllers.Test.run()
+GET         /users                            controllers.Test.getUsers()
+GET         /user/:username            controllers.Test.getUser(username: String)
+POST       /user                            controllers.Test.addUser()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

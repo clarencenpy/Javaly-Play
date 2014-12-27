@@ -1,0 +1,38 @@
+@(title: String)
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question Submit Testing!</title>
+    </head>
+    <body>
+        <form action="add" method="POST">
+
+                Title:<br>
+                <input type="text" name="title" value="Generic IS200 Question">
+                <br>
+                Class Name:<br>
+                <input type="text" name="className" value="Test">
+                <br>
+                Method Name:<br>
+                <input type="text" name="methodName" value="returnMyself">
+                <br>
+                Description:<br>
+                <input type="text" name="description" value="Write a method returnMyself that takes an int as an argument and returns itself">
+                <br>
+                Test Case 1:<br>
+                <input type="text" name="tc1input" value="1"><br>
+                <input type="text" name="tc1output" value="1">
+                <br>
+                    Test Case 2:<br>
+                    <input type="text" name="tc2input" value="2"><br>
+                    <input type="text" name="tc2output" value="2">
+                    <br> Test Case 3:<br>
+                    <input type="text" name="tc3input" value="3"><br>
+                    <input type="text" name="tc3output" value="3">
+                    <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
