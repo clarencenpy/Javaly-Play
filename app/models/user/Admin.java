@@ -21,7 +21,7 @@ public class Admin extends Model {
     public String username;
 
     //@OneToOne
-    //public User user;
+    public User user;
 
 
 }

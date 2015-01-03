@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 public class Attempt {
 
-    //@Id
+    @Id
     public long attemptId;
 
     public static List<Attempt> attempts;

@@ -9,13 +9,21 @@ create table admin (
 ;
 
 create table attempt (
-  attempt_id                bigint,
+  attempt_id                bigint auto_increment not null,
   question_id               bigint,
   submitted_code            varchar(255),
   last_timing               integer,
   cumulative_timing         integer,
   attempt_count             integer,
-  last_attempted_date       datetime)
+  last_attempted_date       datetime,
+  constraint pk_attempt primary key (attempt_id))
+;
+
+create table category (
+  label                     varchar(255))
+;
+
+create table courses)
 ;
 
 create table instructor (
@@ -69,6 +77,10 @@ SET FOREIGN_KEY_CHECKS=0;
 drop table admin;
 
 drop table attempt;
+
+drop table category;
+
+drop table courses;
 
 drop table instructor;
 

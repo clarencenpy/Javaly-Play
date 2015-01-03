@@ -20,10 +20,10 @@ public class Instructor extends Model {
     public User username;
 
    // @OneToOne
-    //public User user;
+    public User user;
 
    // @OneToMany
-    //public List<Question> questions;
+    public List<Question> questions;
 
 
     
