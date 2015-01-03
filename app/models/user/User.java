@@ -15,6 +15,7 @@ import java.util.Date;
 @Table(name="users")
 public class User extends Model {
 
+
     @Id
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
     @Constraints.Required
@@ -39,6 +40,8 @@ public class User extends Model {
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     public Date lastUpdate;
 
+    @Constraints.Required
+    @Column(columnDefinition = "VARCHAR(1) NOT NULL")
     public char userType; // 's' (student), 'i' (instructor), 'a' (admin)
 
     public User (char userType, String name, String username, String password){
