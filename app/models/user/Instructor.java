@@ -1,11 +1,11 @@
 package models.user;
 
-import models.Question;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by jeremyongts92 on 27/12/14.
@@ -17,13 +17,7 @@ public class Instructor extends Model {
     @Id
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
     @Constraints.Required
-    public User username;
-
-   // @OneToOne
-    public User user;
-
-   // @OneToMany
-    public List<Question> questions;
+    public String username;
 
 
     

@@ -17,6 +17,7 @@ import static play.libs.Json.toJson;
  */
 public class UserMgr extends Controller{
 
+    //TODO: refactor to a security class
     public static Result loginUser() {
         DynamicForm requestData = Form.form().bindFromRequest();
         String username = requestData.get("username");

@@ -12,14 +12,13 @@ import java.util.Date;
  */
 
 @Entity
-@Embeddable
 @Table(name="users")
 public class User extends Model {
-
 
     @Id
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
     @Constraints.Required
+    @OneToOne(cascade=CascadeType.ALL)
     public String username;
 
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")

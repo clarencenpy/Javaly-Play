@@ -30,8 +30,8 @@ public class SecurityUtility {
     public static String[] getHashPair (String password) throws
             NoSuchAlgorithmException,IOException {
         byte[] salt = generateSalt();
-        byte[] passwordHash = calculateHash(password, salt);
-        String [] result = {byteToBase64(passwordHash), byteToBase64(salt)};
+        byte[] input = calculateHash(password, salt);
+        String [] result = {byteToBase64(input), byteToBase64(salt)};
         return result;
     }
 
@@ -46,8 +46,8 @@ public class SecurityUtility {
     public static String getHash (String password, String bsalt) throws
             NoSuchAlgorithmException,IOException {
         byte[] salt = base64ToByte(bsalt);
-        byte[] passwordHash = calculateHash(password, salt);
-        return byteToBase64(passwordHash);
+        byte[] input = calculateHash(password, salt);
+        return byteToBase64(input);
     }
 
 

@@ -3,8 +3,6 @@ package models;
 /**
  * Created by clarencenpy on 15/12/14.
  */
-
-
 public class TestCaseResult {
     private final int id;
     private final String input;

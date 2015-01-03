@@ -21,7 +21,7 @@ public class Question extends Model{
     @Id
     public long id;
 
-   // @ManyToOne
+    @ManyToOne
     public User author;
 
     @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
