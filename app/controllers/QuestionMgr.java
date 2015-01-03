@@ -5,6 +5,7 @@ import engine.TestEngine;
 import models.Question;
 import models.TestCase;
 import models.TestCaseResult;
+import models.user.User;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.*;
@@ -17,6 +18,7 @@ import static play.libs.Json.toJson;
 /**
  * Created by clarencenpy on 25/12/14.
  */
+@Security.Authenticated(Secured.class)
 public class QuestionMgr extends Controller{
 
     public static Result showAddQuestion(){
@@ -25,15 +27,23 @@ public class QuestionMgr extends Controller{
 
     public static Result addQuestion() {
         Question q = bindQuestionForm();
+        User author = Ebean.find(User.class)
+                .where()
+                .eq("username", session().get("username"))
+                .findUnique();
+        q.author = author;
         Ebean.save(q);
-        q.testCases = null; //workaround for a bug in toJson
+
+        q.testCases = null;
+        q.author = null;//workaround for a bug in toJson
         return ok(toJson(q));
     }
 
     public static Result modQuestion() {
         Question q = bindQuestionForm();
         Ebean.update(q);
-        q.testCases = null; //workaround for a bug in toJson
+        q.testCases = null;
+        q.author = null;    //workaround for a bug in toJson
         return ok(toJson(q));
     }
 
