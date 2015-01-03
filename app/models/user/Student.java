@@ -1,9 +1,11 @@
 package models.user;
 
+import models.Attempt;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jeremyongts92 on 27/12/14.
@@ -17,7 +19,12 @@ public class Student extends Model {
     @Constraints.Required
     public String username;
 
-    public Long attempts;
+    @OneToOne
+    public User user;
+
+    @OneToMany(mappedBy = "user")
+    public List<Attempt> attemptObjs;
+
 
 
 

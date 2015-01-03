@@ -21,12 +21,6 @@ public class Question extends Model{
     @Id
     public long id;
 
-    @ManyToOne
-    public User author;
-
-    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
-    public List<TestCase> testCases = new ArrayList<>();
-
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
     @Constraints.Required
     public String title;
@@ -55,6 +49,13 @@ public class Question extends Model{
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     public Date lastUpdate;
+
+    @ManyToOne
+    public User author;
+    
+
+    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+    public List<TestCase> testCases = new ArrayList<>();
 
     public static final String TEST_CASE_INJECTION_HASH = "//ad168bea2e8cab5643936a5b223d859adc763f9dd468d225152f824041080559";
     public static final String METHOD_INJECTION_HASH = "//011f94cb6b87975609c962660ce9261cbf117cbca49057e6a0e9f7a274f28780";
