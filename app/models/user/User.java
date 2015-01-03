@@ -12,6 +12,7 @@ import java.util.Date;
  */
 
 @Entity
+@Embeddable
 @Table(name="users")
 public class User extends Model {
 

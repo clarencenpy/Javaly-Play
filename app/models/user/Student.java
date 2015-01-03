@@ -17,8 +17,8 @@ public class Student extends Model {
     @Constraints.Required
     public String username;
 
-    @OneToOne
-    public User user;
+    //@OneToOne
+    //public User user;
 
     public Long attempts;
 
