@@ -10,7 +10,7 @@ POST        /question/add           controllers.QuestionMgr.addQuestion()
 POST        /question/modify        controllers.QuestionMgr.modQuestion()
 POST        /question/submit        controllers.QuestionMgr.submitAnswer()
 #this is a test method!
-GET         /question/add/           controllers.QuestionMgr.showAddQuestion()
+GET         /question/add           controllers.QuestionMgr.showAddQuestion()
 
 
 # User Management
