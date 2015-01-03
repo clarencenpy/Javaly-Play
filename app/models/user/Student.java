@@ -1,16 +1,25 @@
 package models.user;
 
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
+
+import javax.persistence.*;
+
 /**
  * Created by jeremyongts92 on 27/12/14.
  */
-public class Student extends User {
+
+@Entity
+public class Student extends Model {
+
+    @Id
+    @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Constraints.Required
+    public String username;
 
     public Long attempts;
 
-    public Student (Long id, String name, String username, String password){
-        super('s', id, name, username, password);
 
-    }
 
 
 }

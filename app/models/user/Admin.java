@@ -1,13 +1,20 @@
 package models.user;
 
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 /**
  * Created by jeremyongts92 on 27/12/14.
  */
-public class Admin extends User {
+public class Admin extends Model {
 
-    public Admin (Long id, String name, String username, String password){
-        super('a', id, name, username, password);
+    @Id
+    @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Constraints.Required
+    public String username;
 
 
-    }
 }

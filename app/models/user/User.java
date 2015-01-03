@@ -16,15 +16,13 @@ import java.util.Date;
 public class User extends Model {
 
     @Id
-    public Long id;
+    @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Constraints.Required
+    public String username;
 
     @Column(columnDefinition = "VARCHAR(30) NOT NULL")
     @Constraints.Required
     public String name;
-
-    @Column(columnDefinition = "VARCHAR(30) NOT NULL")
-    @Constraints.Required
-    public String username;
 
     @Column(columnDefinition = "VARCHAR(100) NOT NULL")
     @Constraints.Required
@@ -43,13 +41,14 @@ public class User extends Model {
 
     public char userType; // 's' (student), 'i' (instructor), 'a' (admin)
 
-    public User (char userType, Long id, String name, String username, String password){
+    public User (char userType, String name, String username, String password){
         this.userType = userType;
-        this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
 
     }
+
+
 
 }
