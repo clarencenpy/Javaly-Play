@@ -73,6 +73,8 @@ public class UserMgr extends Controller{
                 u.salt = passwords[1];
                 u.createdDate = new Date();
                 Ebean.save(u);
+                session().put("username", u.username);
+                return ok("Welcome "+ u.username);
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -80,7 +82,7 @@ public class UserMgr extends Controller{
 
 
 
-        return ok("Welcome " + u.username);
+        return status(503, "Something went wrong!");
     }
 
 }
