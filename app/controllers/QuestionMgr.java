@@ -9,6 +9,7 @@ import models.user.User;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.*;
+import scala.util.parsing.json.JSONArray$;
 import views.html.questionsubmit;
 
 import java.util.ArrayList;
@@ -21,6 +22,17 @@ import static play.libs.Json.toJson;
 @Security.Authenticated(Secured.class)
 public class QuestionMgr extends Controller{
 
+    public static Result showAllQuestion(){
+        List<Question> qList = Ebean.find(Question.class).findList();
+
+        for(Question q : qList) {
+            q.testCases = null;
+            q.author = null;
+        }
+        //Gson gsonObj = new Gson();
+
+        return ok(toJson(qList));
+    }
     public static Result showAddQuestion(){
         return ok(views.html.questionsubmit.render("Stuff,"));
     }
@@ -79,5 +91,6 @@ public class QuestionMgr extends Controller{
 
         return q;
     }
+
 
 }

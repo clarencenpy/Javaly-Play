@@ -11,12 +11,13 @@ POST        /question/modify        controllers.QuestionMgr.modQuestion()
 POST        /question/submit        controllers.QuestionMgr.submitAnswer()
 #this is a test method!
 GET         /question/add           controllers.QuestionMgr.showAddQuestion()
+GET         /question/all           controllers.QuestionMgr.showAllQuestion()
 
 
 # User Management
 POST        /user/login             controllers.UserMgr.loginUser()
 POST        /user/logout            controllers.UserMgr.logoutUser()
-GET         /user/register/          controllers.UserMgr.showRegisterUser()
+GET         /user/register/         controllers.UserMgr.showRegisterUser()
 POST        /user/register          controllers.UserMgr.registerUser()
 
 # Test
