@@ -52,7 +52,9 @@ public class Question extends Model{
 
     @ManyToOne
     public User author;
-    
+
+    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+    public List<Attempt> attempts = new ArrayList<>();
 
     @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
     public List<TestCase> testCases = new ArrayList<>();

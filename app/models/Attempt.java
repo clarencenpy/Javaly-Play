@@ -31,7 +31,7 @@ public class Attempt {
     @ManyToOne
     public User user;
 
-    //@ManyToOne find out how to have multiple OneToMany annotations for 'Question' class
+    @ManyToOne
     Question question;
 
 }
