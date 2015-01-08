@@ -4,16 +4,17 @@
 
 # Application
 GET         /                       controllers.Application.index()
-OPTIONS	    /*path                  controllers.Application.preflight(path: String)
+OPTIONS     /*all                   controllers.Application.preflight(all)
 
 # Questions
 POST        /question/add           controllers.QuestionMgr.addQuestion()
 POST        /question/modify        controllers.QuestionMgr.modQuestion()
 POST        /question/submit        controllers.QuestionMgr.submitAnswer()
+GET         /question/all           controllers.QuestionMgr.showAllQuestion()
+GET         /question/:id           controllers.QuestionMgr.showQuestion(id: Int)
+
 #this is a test method!
 GET         /question/add           controllers.QuestionMgr.showAddQuestion()
-GET         /question/all           controllers.QuestionMgr.showAllQuestion()
-
 
 # User Management
 POST        /user/login             controllers.UserMgr.loginUser()

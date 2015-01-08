@@ -22,7 +22,6 @@ import static play.libs.Json.toJson;
  */
 
 
-@CorsComposition.Cors
 //@Security.Authenticated(Secured.class)
 public class QuestionMgr extends Controller{
 
@@ -37,6 +36,14 @@ public class QuestionMgr extends Controller{
 
         return ok(toJson(qList));
     }
+
+    public static Result showQuestion(int id) {
+        Question q = Ebean.find(Question.class, id);
+        q.testCases = null;
+        return ok(toJson(q));
+
+    }
+
     public static Result showAddQuestion(){
         return ok(views.html.questionsubmit.render("Stuff,"));
     }
