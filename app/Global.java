@@ -1,9 +1,3 @@
-/**
- * Created by clarencenpy on 2/1/15.
- */
-
-import java.net.URL;
-
 import play.*;
 import play.libs.F.Promise;
 import play.mvc.Action;
