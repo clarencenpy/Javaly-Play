@@ -58,4 +58,21 @@ public class Test extends Controller {
         ArrayList<TestCaseResult> results = te.run();
         return ok(toJson(results));
     }
+
+    public static Result fakeResult() {
+        ArrayList<TestCaseResult> results = new ArrayList<>();
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput><line2><expectedOutput><line2><expectedOutput><line2>", false));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
+        return ok(toJson(results));
+    }
 }
