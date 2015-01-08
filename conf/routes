@@ -4,6 +4,7 @@
 
 # Application
 GET         /                       controllers.Application.index()
+OPTIONS	    /*path                  controllers.Application.preflight(path: String)
 
 # Questions
 POST        /question/add           controllers.QuestionMgr.addQuestion()
@@ -23,6 +24,7 @@ POST        /user/register          controllers.UserMgr.registerUser()
 # Test
 GET         /addfake                controllers.Test.addFakeQuestion()
 GET         /run                    controllers.Test.run()
+GET         /fakeresult             controllers.Test.fakeResult()
 #GET         /users                 controllers.Test.getUsers()
 #GET         /user/:username        controllers.Test.getUser(username: String)
 #POST        /user                  controllers.Test.addUser()

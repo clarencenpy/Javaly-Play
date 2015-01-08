@@ -9,6 +9,7 @@ import models.user.User;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.*;
+import actions.*;
 import scala.util.parsing.json.JSONArray$;
 import views.html.questionsubmit;
 
@@ -19,7 +20,10 @@ import static play.libs.Json.toJson;
 /**
  * Created by clarencenpy on 25/12/14.
  */
-@Security.Authenticated(Secured.class)
+
+
+@CorsComposition.Cors
+//@Security.Authenticated(Secured.class)
 public class QuestionMgr extends Controller{
 
     public static Result showAllQuestion(){
