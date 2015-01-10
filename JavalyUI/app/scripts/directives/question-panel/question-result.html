@@ -1,0 +1,16 @@
+<md-card>
+  <table class="table table-hover"
+         style="font-size: 18px; font-family: menlo">
+    <tr>
+      <th>Input</th>
+      <th>Expected Output</th>
+      <th>Your Output</th>
+    </tr>
+    <tr ng-repeat="result in results" ng-class="result.hasPassed ? 'success' : 'danger'">
+      <td>{{ result.input }}</td>
+      <td>{{ result.resultOutput }}</td>
+      <td>{{ result.expectedOutput }}</td>
+    </tr>
+
+  </table>
+</md-card>

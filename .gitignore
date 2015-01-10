@@ -12,4 +12,14 @@ dist
 /.classpath
 /.project
 /RUNNING_PID
-/.settings
+/conf/evolutions.default
+
+
+JavalyUI/node_modules
+JavalyUI/dist
+JavalyUI/.tmp
+JavalyUI/.sass-cache
+JavalyUI/bower_components
+JavalyUI/.gitignore
+JavalyUI/.gitattributes
+JavalyUI/.editorconfig
