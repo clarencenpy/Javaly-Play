@@ -2,6 +2,7 @@
 
 angular
   .module('JavalyApp', [
+    'config',
     'ngAnimate',
     'ngCookies',
     'ngResource',

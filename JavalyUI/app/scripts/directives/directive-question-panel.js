@@ -10,7 +10,7 @@ angular
       restrict: 'EA',
       replace: true,
       templateUrl: "views/directive-question-panel.html",
-      controller: function($scope, $http, $stateParams) {
+      controller: function($scope, $http, $stateParams, ENV) {
         $scope.editorOptions = {
           lineWrapping : true,
           lineNumbers: true,
@@ -21,14 +21,10 @@ angular
           autofocus: true
         }
 
-        $http.get('http://localhost:9000/question/' + $stateParams.id).success(function(data) {
+        $http.get(ENV.apiEndpoint + 'question/' + $stateParams.id).success(function(data) {
           $scope.question = data;
         })
 
-
-        $http.get('http://localhost:9000/fakeresult').success(function(data) {
-          $scope.results = data;
-        })
 
         $scope.code = ''
 
@@ -40,7 +36,7 @@ angular
 
           $http({
             method: 'POST',
-            url: 'http://localhost:9000/question/submit',
+            url: ENV.apiEndpoint + 'question/submit',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             transformRequest: function(obj) {
               var str = []

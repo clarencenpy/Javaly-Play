@@ -10,8 +10,8 @@ angular
       restrict: 'EA',
       replace: true,
       templateUrl: "views/directive-question-list.html",
-      controller: function($scope, $http) {
-        $http.get('http://localhost:9000/question/all').success(function (data) {
+      controller: function($scope, $http, ENV) {
+        $http.get(ENV.apiEndpoint + 'question/all').success(function (data) {
           $scope.questions = data
         })
       }

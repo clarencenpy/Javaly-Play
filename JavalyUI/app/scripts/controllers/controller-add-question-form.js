@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('JavalyApp')
-  .controller('addQuestionFormController', function($scope, $http, $mdToast) {
+  .controller('addQuestionFormController', function($scope, $http, $mdToast, ENV) {
     $scope.editorOptions = {
       lineWrapping : true,
       smartIndent: false,
@@ -82,7 +82,7 @@ angular.module('JavalyApp')
 
       $http({
         method: 'POST',
-        url: 'http://localhost:9000/question/add',
+        url: ENV.apiEndpoint + 'question/add',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         transformRequest: function(obj) {
           var str = []
