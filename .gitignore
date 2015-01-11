@@ -16,10 +16,10 @@ dist
 
 
 JavalyUI/node_modules
+JavalyUI/bower_components
 JavalyUI/dist
 JavalyUI/.tmp
 JavalyUI/.sass-cache
-JavalyUI/bower_components
 JavalyUI/.gitignore
 JavalyUI/.gitattributes
 JavalyUI/.editorconfig

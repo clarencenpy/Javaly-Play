@@ -1,6 +1,12 @@
 // bower:scss
 // endbower
 
+//Clarence Start
+md-card {
+  padding: 10px;
+  margin: 10px;
+}
+
 body{
   overflow-y:scroll;  //always show scroll bar
 }
@@ -19,6 +25,8 @@ body{
   font-size: 15px;
   height: 100%;
 }
+
+//Clarence End
 
 .browsehappy {
   margin: 0.2em 0;
