@@ -1,9 +1,3 @@
->ER Diagram 
-
->To View: https://www.lucidchart.com/documents/view/245c0b7e-9b44-4bd9-b009-8802c1912e1c
-
->To Edit: https://www.lucidchart.com/invitations/accept/da3b36ca-f937-4768-a430-dbd69fc45d06
-
 #Javaly!
 Javaly is Practice-it 2.0 on steroids. It's a tool to help professors and teachers teach programming better, and to help students learn programming in a fun yet methodical way, making use (eventually...) of stats and data to enhance the learning experience and the teaching experience, all in the name of learning how to write good clean code.
 
@@ -21,6 +15,33 @@ We hope to have all of the functions of Practice-it, as well as the following:
 1. Basic functionality (compile, run, check answers for method based questions)
 2. Adding of questions
 3. Basic index, question, and checking UI
+
+----
+
+## Grunt/Bower setup instructions
+
+### Dependencies
+
+[Node.js/npm - Runtime environment](http://nodejs.org/)  
+[Grunt - Build tool](http://gruntjs.com/)  
+[Bower - Dependency management](http://bower.io/)
+
+### Usage
+1. Ensure that `npm` is installed globally on your system.
+1. In your terminal, `cd` to the JavalyUI root directory. I put this directory inside the Javaly directory `../Javaly/JavalyUI`
+1. Run `npm install`. You should observe packages being downloaded to the `node_modules` directory.
+1. Run `bower install` You should observe packages being downloaded to the `bower_components` directory.
+1. Now, you can run `grunt serve` to load up the UI. Your browser window should open automatically, otherwise, navigate to `http://localhost:9001/`
+1. `grunt serve` provides live reload for UI development, so any changes made to the UI code will be automatically propagated.
+1. To package src files for the production environment, run `grunt build`. This will concatenate and minify files into `../public` **Important: Ensure that you are in the right directory or you might delete files in the parent directory accidentally, using the --force option**  
+
+----
+
+##ER Diagram 
+
+>To View: https://www.lucidchart.com/documents/view/245c0b7e-9b44-4bd9-b009-8802c1912e1c
+
+>To Edit: https://www.lucidchart.com/invitations/accept/da3b36ca-f937-4768-a430-dbd69fc45d06
 
 ###About the PlayFramework
 To get a primer on the PlayFramework, there are a few tutorials/templates available from Typesafe through the Activator UI we can make reference to.
