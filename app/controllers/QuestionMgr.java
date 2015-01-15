@@ -98,11 +98,13 @@ public class QuestionMgr extends Controller{
 
         List<TestCase> testCases = new ArrayList<>();
 
-        for(int i = 1; true; i++) {
+        for(int i = 1;
+                requestData.get("tc"+i+"input") != null &&
+                requestData.get("tc"+i+"output") != null;
+                i++) {
             TestCase t = new TestCase();
             t.input = requestData.get("tc"+i+"input");
             t.output =  requestData.get("tc"+i+"output");
-            if(t.input == null || t.output == null) break;
             testCases.add(t);
         }
         q.testCases = testCases;
