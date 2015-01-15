@@ -17,6 +17,7 @@ create table attempt (
   attempt_count             integer,
   last_attempted_date       datetime,
   user_username             VARCHAR(30) NOT NULL,
+  question_id               bigint,
   constraint pk_attempt primary key (attempt_id))
 ;
 
@@ -69,14 +70,16 @@ alter table admin add constraint fk_admin_user_1 foreign key (user_username) ref
 create index ix_admin_user_1 on admin (user_username);
 alter table attempt add constraint fk_attempt_user_2 foreign key (user_username) references users (username) on delete restrict on update restrict;
 create index ix_attempt_user_2 on attempt (user_username);
-alter table instructor add constraint fk_instructor_user_3 foreign key (user_username) references users (username) on delete restrict on update restrict;
-create index ix_instructor_user_3 on instructor (user_username);
-alter table questions add constraint fk_questions_author_4 foreign key (author_username) references users (username) on delete restrict on update restrict;
-create index ix_questions_author_4 on questions (author_username);
-alter table student add constraint fk_student_user_5 foreign key (user_username) references users (username) on delete restrict on update restrict;
-create index ix_student_user_5 on student (user_username);
-alter table test_cases add constraint fk_test_cases_question_6 foreign key (question_id) references questions (id) on delete restrict on update restrict;
-create index ix_test_cases_question_6 on test_cases (question_id);
+alter table attempt add constraint fk_attempt_question_3 foreign key (question_id) references questions (id) on delete restrict on update restrict;
+create index ix_attempt_question_3 on attempt (question_id);
+alter table instructor add constraint fk_instructor_user_4 foreign key (user_username) references users (username) on delete restrict on update restrict;
+create index ix_instructor_user_4 on instructor (user_username);
+alter table questions add constraint fk_questions_author_5 foreign key (author_username) references users (username) on delete restrict on update restrict;
+create index ix_questions_author_5 on questions (author_username);
+alter table student add constraint fk_student_user_6 foreign key (user_username) references users (username) on delete restrict on update restrict;
+create index ix_student_user_6 on student (user_username);
+alter table test_cases add constraint fk_test_cases_question_7 foreign key (question_id) references questions (id) on delete restrict on update restrict;
+create index ix_test_cases_question_7 on test_cases (question_id);
 
 
 

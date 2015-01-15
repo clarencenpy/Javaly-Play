@@ -54,6 +54,13 @@ public class QuestionMgr extends Controller{
                 .where()
                 .eq("username", session().get("username"))
                 .findUnique();
+
+        //FOR DEBUGGING
+        if(author==null){
+            author = User.getDebugUser();
+            Ebean.save(author);
+        }
+
         q.author = author;
         Ebean.save(q);
 
