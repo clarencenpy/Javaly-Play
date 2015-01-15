@@ -98,11 +98,11 @@ public class QuestionMgr extends Controller{
 
         List<TestCase> testCases = new ArrayList<>();
 
-        //TODO: Change test case adding according to number provided by client
-        for(int i = 1; i <= 3; i++) {
+        for(int i = 1; true; i++) {
             TestCase t = new TestCase();
             t.input = requestData.get("tc"+i+"input");
             t.output =  requestData.get("tc"+i+"output");
+            if(t.input == null || t.output == null) break;
             testCases.add(t);
         }
         q.testCases = testCases;
