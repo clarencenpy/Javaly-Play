@@ -29,7 +29,7 @@ angular
       })
       .state('addQuestion', {
         url: '/addquestion',
-        templateUrl: 'views/partial-add-question-view.html'
+        template: '<question-form></question-form>'
       })
   })
 
