@@ -3,32 +3,33 @@
 # ~~~~
 
 # Application
-GET         /                       controllers.Application.index()
-OPTIONS     /*all                   controllers.Application.preflight(all)
+GET            /                       controllers.Application.index()
+GET            /app                    controllers.Application.app()
+OPTIONS        /*all                   controllers.Application.preflight(all)
 
 # Questions
-POST        /question/add           controllers.QuestionMgr.addQuestion()
-POST        /question/modify        controllers.QuestionMgr.modQuestion()
-POST        /question/submit        controllers.QuestionMgr.submitAnswer()
-GET         /question/all           controllers.QuestionMgr.showAllQuestion()
-GET         /question/:id           controllers.QuestionMgr.showQuestion(id: Int)
+POST           /question/add           controllers.QuestionMgr.addQuestion()
+POST           /question/modify        controllers.QuestionMgr.modQuestion()
+POST           /question/submit        controllers.QuestionMgr.submitAnswer()
+GET            /question/all           controllers.QuestionMgr.showAllQuestion()
+GET            /question/:id           controllers.QuestionMgr.showQuestion(id: Int)
 
 #this is a test method!
-GET         /question/add           controllers.QuestionMgr.showAddQuestion()
+GET            /question/add           controllers.QuestionMgr.showAddQuestion()
 
 # User Management
-POST        /user/login             controllers.UserMgr.loginUser()
-POST        /user/logout            controllers.UserMgr.logoutUser()
-GET         /user/register/         controllers.UserMgr.showRegisterUser()
-POST        /user/register          controllers.UserMgr.registerUser()
+POST           /user/login             controllers.UserMgr.loginUser()
+POST           /user/logout            controllers.UserMgr.logoutUser()
+GET            /user/register/         controllers.UserMgr.showRegisterUser()
+POST           /user/register          controllers.UserMgr.registerUser()
 
 # Test
-GET         /addfake                controllers.Test.addFakeQuestion()
-GET         /run                    controllers.Test.run()
-GET         /fakeresult             controllers.Test.fakeResult()
+GET            /addfake                controllers.Test.addFakeQuestion()
+GET            /run                    controllers.Test.run()
+GET            /fakeresult             controllers.Test.fakeResult()
 #GET         /users                 controllers.Test.getUsers()
 #GET         /user/:username        controllers.Test.getUser(username: String)
 #POST        /user                  controllers.Test.addUser()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /app/*file           controllers.Assets.at(path="/public", file)
+GET            /app/*file              controllers.Assets.at(path="/public", file)
