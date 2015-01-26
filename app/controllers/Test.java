@@ -1,5 +1,6 @@
 package controllers;
 
+import akka.actor.*;
 import com.avaje.ebean.Ebean;
 import engine.TestEngine;
 import models.Question;
@@ -8,11 +9,16 @@ import models.TestCaseResult;
 import models.user.User;
 import play.data.Form;
 import play.db.ebean.Model;
+
+import play.libs.Akka;
+import play.libs.F;
+import play.libs.F.Promise;
 import play.mvc.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static akka.pattern.Patterns.ask;
 import static play.libs.Json.toJson;
 
 public class Test extends Controller {
@@ -74,5 +80,39 @@ public class Test extends Controller {
         results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
         results.add(new TestCaseResult(1,"<input>","<resultOutput>", "<expectedOutput>", true));
         return ok(toJson(results));
+    }
+
+    public static WebSocket<String> socket() {
+
+        return new WebSocket<String>() {
+
+            // Called when the Websocket Handshake is done.
+            public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
+
+                // For each event received on the socket,
+                in.onMessage(new F.Callback<String>() {
+                    public void invoke(String event) {
+
+                        // Log events to the console
+                        System.out.println(event);
+
+                    }
+                });
+
+                // When the socket is closed.
+                in.onClose(new F.Callback0() {
+                    public void invoke() {
+
+                        System.out.println("Disconnected");
+
+                    }
+                });
+
+                // Send a single 'Hello!' message
+                out.write("Hello!");
+
+            }
+
+        };
     }
 }

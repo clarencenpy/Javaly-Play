@@ -20,18 +20,32 @@ public class Attempt {
     public long attemptId;
 
     public String submittedCode;
+    /*
+    TODO:
     public int lastTiming;
     public int cumulativeTiming;
     public int attemptCount;
+    */
+
+    public boolean isCorrect;
+
     public Date lastAttemptedDate;
-
-
-    public static List<Attempt> attempts;
 
     @ManyToOne
     public User user;
 
     @ManyToOne
-    Question question;
+    public Question question;
 
+    @ManyToOne
+    public Progress progress;
+
+    public Attempt(String submittedCode, boolean isCorrect,
+                    Date lastAttemptedDate, User user, Question question){
+        this.submittedCode = submittedCode;
+        this.isCorrect = isCorrect;
+        this.lastAttemptedDate = lastAttemptedDate;
+        this.user = user;
+        this.question = question;
+    }
 }

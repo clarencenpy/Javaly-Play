@@ -44,6 +44,10 @@ public class QuestionMgr extends Controller{
 
     }
 
+    public static Result submitAnswer() {
+       return AttemptMgr.processAttempt();
+    }
+
     public static Result showAddQuestion(){
         return ok(views.html.questionsubmit.render("Stuff,"));
     }
@@ -75,17 +79,6 @@ public class QuestionMgr extends Controller{
         q.testCases = null;
         q.author = null;    //workaround for a bug in toJson
         return ok(toJson(q));
-    }
-
-    public static Result submitAnswer() {
-        DynamicForm requestData = Form.form().bindFromRequest();
-        String code = requestData.get("code");
-        long id = Long.parseLong(requestData.get("id"));
-
-        TestEngine te = new TestEngine(Ebean.find(Question.class, id), code);
-        ArrayList<TestCaseResult> results = te.run();
-
-        return ok(toJson(results));
     }
 
     private static Question bindQuestionForm(){

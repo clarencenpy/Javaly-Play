@@ -12,12 +12,11 @@ create table admin (
 create table attempt (
   attempt_id                bigint auto_increment not null,
   submitted_code            varchar(255),
-  last_timing               integer,
-  cumulative_timing         integer,
-  attempt_count             integer,
+  is_correct                tinyint(1) default 0,
   last_attempted_date       datetime,
   user_username             VARCHAR(30) NOT NULL,
   question_id               bigint,
+  progress_progress_id      bigint,
   constraint pk_attempt primary key (attempt_id))
 ;
 
@@ -25,6 +24,11 @@ create table instructor (
   username                  VARCHAR(30) NOT NULL not null,
   user_username             VARCHAR(30) NOT NULL,
   constraint pk_instructor primary key (username))
+;
+
+create table progress (
+  progress_id               bigint auto_increment not null,
+  constraint pk_progress primary key (progress_id))
 ;
 
 create table questions (
@@ -72,14 +76,16 @@ alter table attempt add constraint fk_attempt_user_2 foreign key (user_username)
 create index ix_attempt_user_2 on attempt (user_username);
 alter table attempt add constraint fk_attempt_question_3 foreign key (question_id) references questions (id) on delete restrict on update restrict;
 create index ix_attempt_question_3 on attempt (question_id);
-alter table instructor add constraint fk_instructor_user_4 foreign key (user_username) references users (username) on delete restrict on update restrict;
-create index ix_instructor_user_4 on instructor (user_username);
-alter table questions add constraint fk_questions_author_5 foreign key (author_username) references users (username) on delete restrict on update restrict;
-create index ix_questions_author_5 on questions (author_username);
-alter table student add constraint fk_student_user_6 foreign key (user_username) references users (username) on delete restrict on update restrict;
-create index ix_student_user_6 on student (user_username);
-alter table test_cases add constraint fk_test_cases_question_7 foreign key (question_id) references questions (id) on delete restrict on update restrict;
-create index ix_test_cases_question_7 on test_cases (question_id);
+alter table attempt add constraint fk_attempt_progress_4 foreign key (progress_progress_id) references progress (progress_id) on delete restrict on update restrict;
+create index ix_attempt_progress_4 on attempt (progress_progress_id);
+alter table instructor add constraint fk_instructor_user_5 foreign key (user_username) references users (username) on delete restrict on update restrict;
+create index ix_instructor_user_5 on instructor (user_username);
+alter table questions add constraint fk_questions_author_6 foreign key (author_username) references users (username) on delete restrict on update restrict;
+create index ix_questions_author_6 on questions (author_username);
+alter table student add constraint fk_student_user_7 foreign key (user_username) references users (username) on delete restrict on update restrict;
+create index ix_student_user_7 on student (user_username);
+alter table test_cases add constraint fk_test_cases_question_8 foreign key (question_id) references questions (id) on delete restrict on update restrict;
+create index ix_test_cases_question_8 on test_cases (question_id);
 
 
 
@@ -92,6 +98,8 @@ drop table admin;
 drop table attempt;
 
 drop table instructor;
+
+drop table progress;
 
 drop table questions;
 
