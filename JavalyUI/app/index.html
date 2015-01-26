@@ -30,10 +30,10 @@
     <![endif]-->
 
     <div ng-controller="sidebarCtrl" layout="column" layout-fill>
-      <section layout="row" flex>
+      <section layout="row">
 
         <!--Sidebar Left-->
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')">
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')">
 
           <!--Header-->
           <md-toolbar class="md-hue-2">
@@ -45,31 +45,20 @@
               </div>
             </h1>
           </md-toolbar>
+          <!--End Header-->
 
           <!--Menu Items-->
           <md-content class="md-padding">
-
-            <a ui-sref="listQuestions">
-              <md-button ng-click="toggleLeft()" class="md-primary">Question Repository</md-button>
-            </a>
-            <br/>
-            <a ui-sref="practice">
-              <md-button ng-click="toggleLeft()" class="md-primary">Start Practice</md-button>
-            </a>
-            <br/>
-            <a ui-sref="addQuestion">
-              <md-button ng-click="toggleLeft()" class="md-primary">Add Question</md-button>
-            </a>
-
-
+            <menu-items></menu-items>
           </md-content>
 
         </md-sidenav>
+        <!--End sidebar-->
 
-        <!--Center Panel-->
-        <md-content flex >
+        <!-- Main View -->
+        <div layout-fill>
 
-          <!--Nav Bar-->
+          <!--Top Bar-->
           <md-toolbar class="md-hue-2">
             <div class="md-toolbar-tools">
               <md-button ng-click="toggleLeft()" hide-gt-md>
@@ -89,18 +78,22 @@
               <md-button><i class="fa fa-lg fa-sign-in"></i></md-button>
             </div>
           </md-toolbar>
+          <!--End Top Bar-->
 
           <!--Main Content-->
-          <md-content class="md-padding">
+          <md-content id="layout-main-column" class="md-padding">
             <div class="ui-view"></div>
           </md-content>
+          <!--End Main Content-->
 
-        </md-content>
+        </div>
+        <!--End Main View-->
+
       </section>
 
-
-
     </div>
+
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -110,7 +103,7 @@
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-58621292-1', 'auto');
        ga('send', 'pageview');
     </script>
 
@@ -151,9 +144,11 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/config.js"></script>
     <script src="scripts/controllers/controller-sidebar.js"></script>
-    <script src="scripts/controllers/controller-add-question-form.js"></script>
+    <!--<script src="scripts/controllers/controller-add-question-form.js"></script>-->
+    <script src="scripts/directives/directive-question-form.js"></script>
     <script src="scripts/directives/directive-question-panel.js"></script>
     <script src="scripts/directives/directive-question-list.js"></script>
+    <script src="scripts/directives/directive-menu-items.js"></script>
     <!-- endbuild -->
 
 </body>

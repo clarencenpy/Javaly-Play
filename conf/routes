@@ -4,6 +4,7 @@
 
 # Application
 GET            /                       controllers.Application.index()
+GET            /app                    controllers.Application.app()
 OPTIONS        /*all                   controllers.Application.preflight(all)
 
 # Questions
@@ -28,6 +29,9 @@ GET            /user/register/         controllers.UserMgr.showRegisterUser()
 POST           /user/register          controllers.UserMgr.registerUser()
 
 # Test
+GET            /addfake                controllers.Test.addFakeQuestion()
+GET            /run                    controllers.Test.run()
+GET            /fakeresult             controllers.Test.fakeResult()
 GET            /addfake                controllers.Test.addFakeQuestion()
 GET            /run                    controllers.Test.run()
 GET            /fakeresult             controllers.Test.fakeResult()
