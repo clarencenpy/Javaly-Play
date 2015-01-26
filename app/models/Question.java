@@ -54,9 +54,6 @@ public class Question extends Model{
     public User author;
 
     @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
-    public List<Attempt> attempts = new ArrayList<>();
-
-    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
     public List<TestCase> testCases = new ArrayList<>();
 
     public static final String TEST_CASE_INJECTION_HASH = "//ad168bea2e8cab5643936a5b223d859adc763f9dd468d225152f824041080559";
