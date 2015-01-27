@@ -22,16 +22,11 @@ public class User extends Model {
     @OneToOne(cascade=CascadeType.ALL)
     public String username;
 
-    @Column(columnDefinition = "VARCHAR(30) NOT NULL")
+    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
     @Constraints.Required
     public String name;
 
-    @Column(columnDefinition = "VARCHAR(100) NOT NULL")
-    @Constraints.Required
     public String password;
-
-    @Column(columnDefinition = "VARCHAR(32) NOT NULL")
-    @Constraints.Required
     public String salt;
 
     @Formats.DateTime(pattern = "MM/DD/YY")

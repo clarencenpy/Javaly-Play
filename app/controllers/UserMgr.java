@@ -21,6 +21,8 @@ import static play.libs.Json.toJson;
  * Created by clarencenpy on 25/12/14.
  */
 public class UserMgr extends Controller{
+    private static final String TEMP_PASSWORD = "Sis_Student2015";
+
 
     //TODO: refactor to a security class
     public static Result loginUser() {
@@ -71,6 +73,13 @@ public class UserMgr extends Controller{
 
 
                 if (serverSignature.equals(generatedSignature) && (Math.abs(serverSignatureTime - currentTime) <= 30)) {
+                    if(!userExists(requestData.get("smu_username"))){
+                        //TODO: register instructors accordingly
+                        String[] passwords = SecurityUtility.getHashPair(TEMP_PASSWORD);
+                        User user = new User(requestData.get("smu_username"),
+                                requestData.get("smu_fullname"),passwords[0],passwords[1], 's');
+                        Ebean.save(user);
+                    }
                     session().put("username", requestData.get("smu_username"));
 
                     return ok("<form action=\"logout\" method=\"POST\">"+requestData.get("smu_username")+ "<input type=\"submit\" value=\"Logout!\"></form>").as("text/html");
@@ -79,8 +88,9 @@ public class UserMgr extends Controller{
             }catch (InvalidKeyException e) {
                 e.printStackTrace();
             }
-
         } catch(NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
 
@@ -121,6 +131,10 @@ public class UserMgr extends Controller{
 
 
         return status(503, "Something went wrong!");
+    }
+
+    private static boolean userExists(String username){
+            return (Ebean.find(User.class).where().eq("username", username).findUnique() != null);
     }
 
     public static String encode(String plain) {
